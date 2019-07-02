@@ -6,8 +6,8 @@
   "scripts": {
     "build": "babel src -d dist",
     "start": "node src/app.js",
-    "test": "exit 0",
-    "watch": "concurrently \"babel src -w -d dist\" \"nodemon dist/app.js\""
+    "watch": "concurrently \"babel src -w -d dist\" \"nodemon dist/app.js\"",
+    "test": "exit 0"
   },
   "engines": {
     "node": "10.x"
