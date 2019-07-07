@@ -16,11 +16,11 @@ liker.addNewMem(new Mem(5, 'img/img50.jpg',0));
 
 console.log(liker);
 
-server.get('/liker', (req, res) => {
+server.get('/mems', (req, res) => {
     return res.send(liker.getAll());
 });
 
-server.post('/liker', (req,res)=>{
+server.post('/mems', (req,res)=>{
     liker.items = req.body;
     return res.send(liker.items.sort(
         (a,b)=>{b.score-a.score}));
