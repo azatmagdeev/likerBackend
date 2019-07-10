@@ -4,13 +4,6 @@ export class Mem {
         this.image = image;
         this.score = score;
     }
-    like() {
-        this.score++;
-    }
-
-    dislike() {
-        this.score--;
-    }
 }
 
 export class Liker {
@@ -18,12 +11,7 @@ export class Liker {
         this.items = [];
     }
 
-    getAll() {
-        return this.items
-    }
-
     addNewMem(item) {
         this.items.push(item)
     }
-
 }
