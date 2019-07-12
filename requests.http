@@ -2,12 +2,13 @@ GET http://localhost:7777/mems
 Accept: application/json
 
 ###
-POST http://localhost:7777/mems/1
+
+POST http://localhost:7777/mems/5
 Content-Type: application/json
 
-{
-  "id": 1,
-  "score": -5
-}
+###
+
+DELETE  http://localhost:7777/mems/5
+Content-Type: application/json
 
 ###

@@ -8,11 +8,11 @@ server.use(cors());
 server.use(bodyParser.json());
 
 const liker = new Liker();
-liker.addNewMem(new Mem(1, 'img/img10.jpg', 0));
-liker.addNewMem(new Mem(2, 'img/img20.jpg', 0));
-liker.addNewMem(new Mem(3, 'img/img30.jpg', 0));
-liker.addNewMem(new Mem(4, 'img/img40.jpg', 0));
-liker.addNewMem(new Mem(5, 'img/img50.jpg', 0));
+liker.addNewMem('img/img10.jpg');
+liker.addNewMem('img/img20.jpg');
+liker.addNewMem('img/img30.jpg');
+liker.addNewMem('img/img40.jpg');
+liker.addNewMem('img/img50.jpg');
 
 console.log(liker);
 
@@ -20,19 +20,19 @@ server.get('/mems', (req, res) => {
     return res.send(liker.items);
 });
 
-server.post('/mems', (req, res) => {
-    liker.items = req.body;
-    return res.send(liker.items.sort(
-        (a, b) => {
-            b.score - a.score
-        }));
-});
 
 server.post('/mems/:id', (req, res) => {
     const id = Number(req.params.id);
     const index = liker.items.findIndex(o => o.id === id);
-    liker.items[index] = req.body;
-    return res.send()
+    liker.items[index].like();
+    res.send()
+});
+
+server.del('/mems/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const index = liker.items.findIndex(o => o.id === id);
+    liker.items[index].dislike()    ;
+    res.send()
 });
 
 const port = process.env.PORT || 7777;

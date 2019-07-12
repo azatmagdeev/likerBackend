@@ -1,17 +1,27 @@
 export class Mem {
-    constructor(id, image, score) {
+    constructor(id, imgUrl) {
         this.id = id;
-        this.image = image;
-        this.score = score;
+        this.imgUrl = imgUrl;
+        this.score = 0;
+    }
+    like() {
+        this.score++;
+    }
+
+    dislike() {
+        this.score--;
     }
 }
 
 export class Liker {
     constructor() {
         this.items = [];
+        this.nextId = 1;
     }
 
-    addNewMem(item) {
+    addNewMem(imgUrl) {
+       const item = new Mem(this.nextId++, imgUrl);
         this.items.push(item)
     }
+
 }
