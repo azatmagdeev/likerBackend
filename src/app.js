@@ -22,19 +22,18 @@ server.get('/mems', (req, res) => {
     return res.send(liker.items);
 });
 
-
 server.post('/mems/:id', (req, res) => {
     const id = Number(req.params.id);
     const index = liker.items.findIndex(o => o.id === id);
     liker.items[index].like();
-    res.send()
+    res.send(liker.items[index])
 });
 
 server.del('/mems/:id', (req, res) => {
     const id = Number(req.params.id);
     const index = liker.items.findIndex(o => o.id === id);
-    liker.items[index].dislike()    ;
-    res.send()
+    liker.items[index].dislike();
+    res.send(liker.items[index])
 });
 
 const port = process.env.PORT || 7777;
